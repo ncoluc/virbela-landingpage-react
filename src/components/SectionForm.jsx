@@ -1,6 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-export const SectionForm = () => {
+const enviarFormulario = (event) => {
+  event.preventDefault();
+
+  var nombre = document.getElementById("nombre").value;
+  var apellido = document.getElementById("apellido").value;
+  var mail = document.getElementById("mail").value;
+
+  var asunto = "Registro para Evento - Virbela Argentina";
+  var cuerpoMail = "Hola Virbela, soy " + nombre + " " + apellido + "\nMi mail es: " + mail + "\nMe gustaría reservar un lugar para el día del evento.\n\nSaludos!\n" + nombre + ".\n\n";
+
+  var mailto = "mailto:gabriel.molina@unahur.edu.ar?subject=" + encodeURIComponent(asunto) + "&body=" + encodeURIComponent(cuerpoMail);
+  window.open(mailto);
+};
+
+const SectionForm = () => {
+  useEffect(() => {
+    const form = document.getElementById("formulario-evento");
+    if (form !== null) {
+      form.addEventListener("submit", enviarFormulario);
+    }
+
+    return () => {
+      if (form !== null) {
+        form.removeEventListener("submit", enviarFormulario);
+      }
+    };
+  }, []);
+
   return (
     <section id="register" className="section-registro pb-5">
       <div className="container pt-5">
@@ -39,7 +66,7 @@ export const SectionForm = () => {
                   <div className="form-check">
                     <input className="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required />
                     <label className="form-check-label" htmlFor="invalidCheck3">
-                      <a className="formulario" href="https://www.virbela.com/terms-of-service" target="_blank">
+                      <a className="formulario" href="https://www.virbela.com/terms-of-service" target="_blank" rel="noreferrer">
                         Terminos y condiciones del evento.
                       </a>
                     </label>

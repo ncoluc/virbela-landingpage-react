@@ -1,0 +1,7 @@
+#div-principal {
+  box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7);
+  --bs-gutter-x: 0rem;
+  max-width: 1320px;
+  margin-right: auto;
+  margin-left: auto;
+}

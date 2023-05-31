@@ -1,3 +1,4 @@
+import "./App.css";
 import Header from "./components/Header";
 import SectionVideo from "./components/SectionVideo";
 import SectionInvitados from "./components/SectionInvitados";
@@ -8,7 +9,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div>
+    <div id="div-principal">
       <Header />
       <SectionVideo />
       <SectionInvitados />
